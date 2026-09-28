@@ -121,3 +121,17 @@ service verification, and controlled testing.
 - Troubleshooting
 - Startup automation
 - Disaster/recovery testing
+
+## Evidence
+
+### Proxmox Node Overview
+
+The Proxmox VE dashboard shows the physical homelab node, running virtual machines and containers, and current host resource utilization.
+
+![Proxmox Node Overview](./images/project-01/01-proxmox-dashboard.png)
+
+### Uptime Kuma Monitoring
+
+Uptime Kuma monitors the availability of the homelab infrastructure. The dashboard demonstrates successful monitoring as well as recorded downtime and recovery events.
+
+![Uptime Kuma Monitoring](./images/project-01/02-uptime-kuma-monitoring.png)

@@ -135,3 +135,29 @@ The Proxmox VE dashboard shows the physical homelab node, running virtual machin
 Uptime Kuma monitors the availability of the homelab infrastructure. The dashboard demonstrates successful monitoring as well as recorded downtime and recovery events.
 
 ![Uptime Kuma Monitoring](./images/project-01/02-uptime-kuma-monitoring.png)
+
+
+
+
+
+### Controlled VM Outage Test
+
+A controlled outage test was performed on Ubuntu Server VM 100 to validate the monitoring and alerting workflow. Before the test, the VM was online and responding normally.
+
+![Ubuntu VM Up Before Test](./images/project-01/03-ubuntu-vm-up-before-test.png)
+
+The Ubuntu VM was then manually shut down to simulate a service outage. Uptime Kuma detected that the VM was no longer reachable.
+
+![Ubuntu VM Down Detected](./images/project-01/04-ubuntu-vm-down-detected.png)
+
+### Discord Outage Alert
+
+After the outage was detected, Uptime Kuma automatically sent a notification to the homelab Discord alert channel, confirming that Ubuntu Server VM 100 was down.
+
+![Discord VM Down Alert](./images/project-01/05-discord-vm-down-alert.png)
+
+### Recovery Verification
+
+The VM was manually started again. Uptime Kuma detected that the service had recovered and automatically sent a recovery notification to Discord.
+
+![Discord VM Recovery Alert](./images/project-01/06-discord-vm-recovery-alert.png)

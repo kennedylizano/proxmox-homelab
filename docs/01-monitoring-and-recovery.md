@@ -161,3 +161,23 @@ After the outage was detected, Uptime Kuma automatically sent a notification to 
 The VM was manually started again. Uptime Kuma detected that the service had recovered and automatically sent a recovery notification to Discord.
 
 ![Discord VM Recovery Alert](./images/project-01/06-discord-vm-recovery-alert.png)
+
+
+### Automated VM Recovery
+
+An automated recovery mechanism was implemented on the Proxmox host using a custom Bash script, a systemd service, and a systemd timer.
+
+The recovery timer runs periodically and checks the power state of Ubuntu Server VM 100. If the VM is running, no action is taken. If Proxmox reports the VM as stopped, the recovery script automatically issues a start command.
+
+The recovery workflow was tested by intentionally shutting down VM 100 from the Proxmox host. During the next recovery check, the script detected that VM 100 was stopped and automatically started it without manual intervention.
+
+The recovery log confirms the sequence:
+
+- Recovery check executed
+- VM 100 detected as stopped
+- Automatic start command issued
+- VM 100 confirmed running during a subsequent check
+
+During this test, Uptime Kuma briefly entered a Pending state but did not declare the VM Down because the automated recovery completed before the outage detection threshold was reached.
+
+![Automated VM Recovery Log](./images/project-01/07-automated-vm-recovery-log.png)

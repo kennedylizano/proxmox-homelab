@@ -49,6 +49,37 @@ I tested this configuration by rebooting the Proxmox host and verifying
 that the Ubuntu Server VM and Uptime Kuma container recovered
 successfully.
 
+## ⚙️ Automated Startup & Recovery
+
+The homelab includes two recovery mechanisms designed to reduce manual intervention and improve service availability.
+
+### Host Reboot Recovery
+
+Proxmox is configured to automatically restore the environment after a host reboot.
+
+Startup sequence:
+
+1. Ubuntu Server VM starts automatically.
+2. Proxmox waits before starting the next service.
+3. Uptime Kuma starts automatically.
+4. Monitoring resumes without manual intervention.
+
+This configuration was tested by rebooting the Proxmox host and verifying that the Ubuntu Server VM and Uptime Kuma container recovered successfully.
+
+### Automated VM Recovery
+
+A custom Bash recovery script and systemd timer monitor the power state of Ubuntu Server VM 100.
+
+The recovery check runs every 60 seconds. If VM 100 is detected as stopped, Proxmox automatically issues a start command without requiring manual intervention.
+
+The recovery workflow was successfully tested by intentionally shutting down VM 100. The system detected the stopped VM and automatically started it again.
+
+During the test, Uptime Kuma briefly entered a Pending state because the automated recovery completed before the outage detection threshold was reached.
+
+Full configuration, testing procedure, logs, and screenshots are documented in:
+
+➡️ [Project 01 — Infrastructure Monitoring & Automated Recovery](docs/01-monitoring-and-recovery.md)
+
 ## 🛠️ Troubleshooting Experience
 
 During the build I encountered and resolved issues involving:

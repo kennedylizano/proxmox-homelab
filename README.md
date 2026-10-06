@@ -33,21 +33,7 @@ Currently monitored:
 Discord notifications are configured to report when monitored services
 go down and when they recover.
 
-## ⚙️ Automated Startup & Recovery
 
-The environment is configured to automatically recover after a Proxmox
-host reboot.
-
-Startup sequence:
-
-1. Ubuntu Server VM starts automatically.
-2. Proxmox waits before starting the next service.
-3. Uptime Kuma starts automatically.
-4. Monitoring resumes without manual intervention.
-
-I tested this configuration by rebooting the Proxmox host and verifying
-that the Ubuntu Server VM and Uptime Kuma container recovered
-successfully.
 
 ## ⚙️ Automated Startup & Recovery
 

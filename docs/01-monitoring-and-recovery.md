@@ -105,6 +105,8 @@ During this project I encountered several issues:
 - Testing outage detection
 - Configuring Discord recovery notifications
 - Configuring VM/container startup order
+- Building a Bash-based automated VM recovery mechanism
+- Creating and managing a systemd service and timer
 
 Each issue was investigated and resolved through configuration checks,
 service verification, and controlled testing.
@@ -120,6 +122,8 @@ service verification, and controlled testing.
 - Discord webhook notifications
 - Troubleshooting
 - Startup automation
+- Bash scripting
+- systemd service and timer management
 - Disaster/recovery testing
 
 ## Evidence
